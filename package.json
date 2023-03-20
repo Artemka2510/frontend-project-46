@@ -1,6 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
+  "type": "module",
   "description": "[![Actions Status](https://github.com/Artemka2510/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Artemka2510/frontend-project-46/actions)",
   "main": "index.js",
   "scripts": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Artemka2510/frontend-project-46/issues"
   },
-  "homepage": "https://github.com/Artemka2510/frontend-project-46#readme"
+  "homepage": "https://github.com/Artemka2510/frontend-project-46#readme",
+  "dependencies": {
+    "commander": "^10.0.0"
+  }
 }
