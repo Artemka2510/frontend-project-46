@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "bin": {
-    "gendiff": "node bin/gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
   "description": "[![Actions Status](https://github.com/Artemka2510/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Artemka2510/frontend-project-46/actions)",
   "main": "index.js",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Artemka2510/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^10.0.0"
+    "commander": "^10.0.0",
+    "lodash": "^4.17.21"
   }
 }
