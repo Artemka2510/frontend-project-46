@@ -21,6 +21,7 @@ const genDiff = (path1, path2) => {
     } if (file1[key] !== file2[key]) {
       return [` ${'-'} ${key}: ${file1[key]}`, ` ${'+'} ${key}: ${file2[key]}`];
     }
+    return comparison;
   });
   const res = `${'{'}\n${comparison.join('\n')}\n${'}'}`;
   return res;

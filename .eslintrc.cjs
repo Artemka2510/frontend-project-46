@@ -11,5 +11,11 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'import/extensions': [
+      2,
+      {
+        "js": "ignorePackages"
+      }
+    ]
   },
 };
