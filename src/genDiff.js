@@ -9,17 +9,17 @@ const genDiff = (path1, path2) => {
   const sortedKeys = _.sortBy(keys);
   const comparison = sortedKeys.flatMap((key) => {
     if (file1[key] !== undefined && file2[key] === undefined) {
-      return ` ${'-'} ${key}: ${file1[key]}`;
+      return `  ${'-'} ${key}: ${file1[key]}`;
     }
     if (file1[key] === undefined && file2[key] !== undefined) {
-      return ` ${'+'} ${key}: ${file2[key]}`;
+      return `  ${'+'} ${key}: ${file2[key]}`;
     }
     if (file1[key] !== undefined && file2[key] !== undefined) {
       if (file1[key] === file2[key]) {
-        return ` ${key}: ${file1[key]}`;
+        return `  ${key}: ${file1[key]}`;
       }
     } if (file1[key] !== file2[key]) {
-      return [` ${'-'} ${key}: ${file1[key]}`, ` ${'+'} ${key}: ${file2[key]}`];
+      return [`  ${'-'} ${key}: ${file1[key]}`, `  ${'+'} ${key}: ${file2[key]}`];
     }
     return comparison;
   });
