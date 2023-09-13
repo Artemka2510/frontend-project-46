@@ -1,30 +1,38 @@
 import path from 'path';
-import fs from 'fs';
+import fs, { readFileSync } from 'fs';
 import _ from 'lodash';
 
+const resolvePath = (filePath) => (filePath.includes('__fixtures__')
+  ? path.resolve(process.cwd(), filePath)
+  : path.resolve(process.cwd(), `__fixtures__/${filePath}`));
+
 const genDiff = (path1, path2) => {
-  const file1 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), path1), 'utf-8'));
-  const file2 = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), path2), 'utf-8'));
-  const keys = _.union(Object.keys(file1), Object.keys(file2));
+  const path11 = resolvePath(path1);
+  const path22 = resolvePath(path2);
+  const file1 = readFileSync(path11, 'utf-8');
+  const file2 = readFileSync(path22, 'utf-8');
+  const data1 = JSON.parse(file1);
+  const data2 = JSON.parse(file2);
+  const keys = _.union(Object.keys(data1), Object.keys(data2));
   const sortedKeys = _.sortBy(keys);
   const comparison = sortedKeys.flatMap((key) => {
-    if (file1[key] !== undefined && file2[key] === undefined) {
-      return `  ${'-'} ${key}: ${file1[key]}`;
+    if (data1[key] !== undefined && data2[key] === undefined) {
+      return `  ${'-'} ${key}: ${data1[key]}`;
     }
-    if (file1[key] === undefined && file2[key] !== undefined) {
-      return `  ${'+'} ${key}: ${file2[key]}`;
+    if (data1[key] === undefined && data2[key] !== undefined) {
+      return `  ${'+'} ${key}: ${data2[key]}`;
     }
-    if (file1[key] !== undefined && file2[key] !== undefined) {
-      if (file1[key] === file2[key]) {
-        return `  ${key}: ${file1[key]}`;
+    if (data1[key] !== undefined && data2[key] !== undefined) {
+      if (data1[key] === data2[key]) {
+        return `  ${key}: ${data1[key]}`;
       }
-    } if (file1[key] !== file2[key]) {
-      return [`  ${'-'} ${key}: ${file1[key]}`, `  ${'+'} ${key}: ${file2[key]}`];
+    } if (data1[key] !== data2[key]) {
+      return [`  ${'-'} ${key}: ${data1[key]}`, `  ${'+'} ${key}: ${data2[key]}`];
     }
     return comparison;
   });
   const res = `${'{'}\n${comparison.join('\n')}\n${'}'}`;
-  return res;
+  return res.toString();
 };
 
 export default genDiff;
