@@ -9,7 +9,6 @@ program
   .version('0.0.1')
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>')
-  .parse()
   .action((filepath1, filepath2) => {
     console.log(genDiff(filepath1, filepath2));
   });
