@@ -4,10 +4,7 @@ import yaml from 'js-yaml';
 
 const getExtension = (filename) => path.extname(filename);
 
-const getName = (filename) => path.basename(filename);
-
 const parser = (filename) => {
-  const name = getName(filename);
   const extension = getExtension(filename);
 
   return extension !== '.json'
