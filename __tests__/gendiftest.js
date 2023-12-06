@@ -26,3 +26,11 @@ test('json2', () => {
   const expectedFile1 = readFile('resultJSON2.txt');
   expect(genDiff('./__fixtures__/file2-1.json', './__fixtures__/file2-2.json')).toBe(expectedFile1);
 });
+test('plain', () => {
+  const expectedFile2 = readFile('resultPlainYML.txt');
+  expect(genDiff('./__fixtures__/file2-1.json', './__fixtures__/file2-2.json', 'plain')).toBe(expectedFile2);
+});
+test('json', () => {
+  const expectedFile3 = readFile('resultJson.txt');
+  expect(genDiff('./__fixtures__/file2-1.json', './__fixtures__/file2-2.json', 'json')).toBe(expectedFile3);
+});
