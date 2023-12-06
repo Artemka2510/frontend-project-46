@@ -30,7 +30,7 @@ test('plain', () => {
   const expectedFile2 = readFile('resultPlainYML.txt');
   expect(genDiff('./__fixtures__/file2-1.json', './__fixtures__/file2-2.json', 'plain')).toBe(expectedFile2);
 });
-test('json', () => {
+test('json2', () => {
   const expectedFile3 = readFile('resultJson.txt');
   expect(genDiff('./__fixtures__/file2-1.json', './__fixtures__/file2-2.json', 'json')).toBe(expectedFile3);
 });
