@@ -6,7 +6,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "description": "[![Actions Status](https://github.com/Artemka2510/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Artemka2510/frontend-project-46/actions)",
-  "main": "src/index.js",
+  "main": "src/genDiff.js",
   "scripts": {
     "test": "jest"
   },
